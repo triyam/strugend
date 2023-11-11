@@ -1,0 +1,23 @@
+{
+  "name": "strugend",
+  "version": "1.0.0",
+  "description": "Blockchain Service Company",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/triyam/strugend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/triyam/strugend/issues"
+  },
+  "homepage": "https://github.com/triyam/strugend#readme"
+}
