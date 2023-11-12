@@ -525,3 +525,17 @@ function commingSoon() {
   vanillaToast
     .show('Coming Soon')
 }
+
+function login() {
+  var username = document.getElementById('uName').value;
+  var password = document.getElementById('pass').value;
+
+    if (username === "srijan" && password === "password") {
+        vanillaToast
+          .success('We have recivied your wish buddy', { duration: 700, fadeDuration: 200 })
+        return getData()
+    } else {
+      vanillaToast
+      .error('Wrong Credentials', { duration: 800, fadeDuration: 100, closeButton: false })
+    }
+}
