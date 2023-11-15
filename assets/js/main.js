@@ -435,7 +435,6 @@ async function getData() {
         return response.json()
       })
       .then(data => {
-        console.log(data);
         displayData(data)
       })
 
@@ -545,8 +544,6 @@ async function getOnboarded(user) {
     component.classList.add('hidden');
   });
 
-
-  console.log(user);
   // Show the selected component
   document.getElementById('component' + 5).classList.remove('hidden');
 
@@ -573,7 +570,7 @@ async function getOnboarded(user) {
     return response.json();
   })
     .then(responseData => {
-      console.log('Data posted successfully:', responseData);
+      console.log('Thank you for reaching out to us:', responseData);
     })
 
 }
@@ -683,17 +680,14 @@ function submitUserData() {
     
     // Display the retrieved data
     if (storedUser) {
-      console.log("Ok1");
       try {
         getOnboarded(JSON.parse(storedUser))
         .then(result => {
-            console.log("Ok2");
         })
       } catch (error) {
         console.error("Error in try block:", error);
       }
     } else {
-      console.log("Ok2");
       getOnboarded(user)
     }
     
@@ -704,7 +698,6 @@ function submitUserData() {
 }
 
 function clearForm() {
-  console.log("**********Clear Form Testing*********************");
   document.getElementById('userForm').reset();
 }
 
@@ -764,7 +757,6 @@ function switchToComponent(componentNumber) {
 //     }
 //   });
 
-//   console.log(checkedCheckboxes2);
 // }
 
 function showError(message) {
