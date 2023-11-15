@@ -530,12 +530,363 @@ function login() {
   var username = document.getElementById('uName').value;
   var password = document.getElementById('pass').value;
 
-    if (username === "srijan" && password === "password") {
-        vanillaToast
-          .success('We have recivied your wish buddy', { duration: 700, fadeDuration: 200 })
-        return getData()
-    } else {
-      vanillaToast
+  if (username === "srijan" && password === "password") {
+    vanillaToast
+      .success('We have recivied your request and we are processing it', { duration: 700, fadeDuration: 200 })
+    return getData()
+  } else {
+    vanillaToast
       .error('Wrong Credentials', { duration: 800, fadeDuration: 100, closeButton: false })
+  }
+}
+
+async function getOnboarded(user) {
+  document.querySelectorAll('.component').forEach(component => {
+    component.classList.add('hidden');
+  });
+
+
+  console.log(user);
+  // Show the selected component
+  document.getElementById('component' + 5).classList.remove('hidden');
+
+  var progressBar = document.getElementById('progress');
+  var currentWidth = parseInt(progressBar.style.width);
+
+  if (currentWidth < 100) {
+    currentWidth += 20; // You can adjust the increment value
+    progressBar.style.width = currentWidth + '%';
+  }
+
+  const apiUrl = "https://strugend-backend.onrender.com/onboarded"
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.body}`);
     }
+    return response.json();
+  })
+    .then(responseData => {
+      console.log('Data posted successfully:', responseData);
+    })
+
+}
+
+function increaseProgress() {
+  var progressBar = document.getElementById('progress');
+  var currentWidth = parseInt(progressBar.style.width) || 16.6666666667;
+
+  if (currentWidth < 100) {
+    currentWidth += 16.6666666667; // You can adjust the increment value
+    progressBar.style.width = currentWidth + '%';
+  }
+}
+
+function decreaseProgress() {
+  var progressBar = document.getElementById('progress');
+  var currentWidth = parseInt(progressBar.style.width) || 100;
+
+  if (currentWidth > 0) {
+    currentWidth -= 16.6666666667; // You can adjust the increment value
+    progressBar.style.width = currentWidth + '%';
+  }
+}
+
+function addArraysWithoutDuplicates(arr1, arr2) {
+  // Create a Set to store unique elements
+  let uniqueElements = new Set([...arr1, ...arr2]);
+
+  // Convert the Set back to an array
+  let resultArray = Array.from(uniqueElements);
+
+  return resultArray;
+}
+
+function submitUserData() {
+
+  //////////////// HEAR RADIO //////////////////////////////
+  let HearRadios = document.getElementsByName('hear');
+
+  // Find the selected radio value
+  let selectedHear = "";
+  for (let i = 0; i < HearRadios.length; i++) {
+    if (HearRadios[i].checked) {
+      selectedHear = HearRadios[i].value;
+      break;
+    }
+  }
+
+  if (selectedHear === "Others") {
+    let usernameInput = document.getElementById('radioInput');
+    selectedHear = usernameInput.value;
+  }
+
+  let checkedCheckboxes = [];
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let textInputValue = document.getElementById('checkInput')?.value;
+
+  checkboxes.forEach(function (checkbox) {
+    if (checkbox.checked) {
+      checkedCheckboxes.push(checkbox.value);
+      if (checkbox.value === "Others") {
+        checkedCheckboxes.push(textInputValue);
+      }
+    }
+  });
+
+
+  // // Get values of checkbox inputs
+  let checkedCheckboxes2 = [];
+  let checkboxes2 = document.querySelectorAll('input[type="checkbox"]');
+  let textInputValue2 = document.getElementById('radioInputt')?.value;
+
+  checkboxes2.forEach((checkbox2) => {
+    if (checkbox2.checked) {
+      checkedCheckboxes2.push(checkbox2.value);
+      if (checkbox2.value === "Otherss") {
+        checkedCheckboxes2.push(textInputValue2);
+      }
+    }
+  });
+
+  const resultArray = addArraysWithoutDuplicates(checkedCheckboxes, checkedCheckboxes2);
+
+  let unwantedElements = ["option1", "Others", "Otherss"]
+
+  let finalArrayCheckbox = resultArray.filter(items => !unwantedElements.includes(items))
+
+  const user = {
+    hear: selectedHear,
+    name: document.getElementById('name').value,
+    role: document.getElementById('role').value,
+    email: document.getElementById('email').value,
+    company: document.getElementById('company').value,
+    website: document.getElementById('website').value,
+    goal: finalArrayCheckbox,
+    // intrestedTechStack: checkedCheckboxes2,
+    meetingId: "",
+  };
+
+  if (typeof(Storage) !== "undefined") {
+      
+    // Save data to localStorage
+    localStorage.setItem('user', JSON.stringify(user));
+    
+    // Retrieve data from localStorage
+    var storedUser = localStorage.getItem("user");
+    
+    // Display the retrieved data
+    if (storedUser) {
+      console.log("Ok1");
+      try {
+        getOnboarded(JSON.parse(storedUser))
+        .then(result => {
+            console.log("Ok2");
+        })
+      } catch (error) {
+        console.error("Error in try block:", error);
+      }
+    } else {
+      console.log("Ok2");
+      getOnboarded(user)
+    }
+    
+  }
+
+  // Submit data to the server and clear the form
+  clearForm();
+}
+
+function clearForm() {
+  console.log("**********Clear Form Testing*********************");
+  document.getElementById('userForm').reset();
+}
+
+function switchToComponent(componentNumber) {
+  // Hide all components
+  document.querySelectorAll('.component').forEach(component => {
+    component.classList.add('hidden');
+  });
+
+  // Show the selected component
+  document.getElementById('component' + componentNumber).classList.remove('hidden');
+
+  var progressBar = document.getElementById('progress');
+  var currentWidth = parseInt(progressBar.style.width) || 20;
+
+  if (currentWidth < 100) {
+    currentWidth += 20; // You can adjust the increment value
+    progressBar.style.width = currentWidth + '%';
+  }
+}
+
+
+// function readInputValues() {
+//   // Get radio inputs with the name 'gender'
+//   let HearRadios = document.getElementsByName('hear');
+
+//   // Find the selected radio value
+//   let selectedHear = "";
+//   for (let i = 0; i < HearRadios.length; i++) {
+//     if (HearRadios[i].checked) {
+//       selectedHear = HearRadios[i].value;
+//       break;
+//     }
+//   }
+
+//   if (selectedHear === "Others") {
+//     let usernameInput = document.getElementById('radioInput');
+//     selectedHear = usernameInput.value;
+//   }
+
+//   // Display the values
+//   alert('Selected Hear: ' + selectedHear);
+// }
+
+// function readValues() {
+//   // Get values of checkbox inputs
+//   let checkedCheckboxes2 = [];
+//   let checkboxes2 = document.querySelectorAll('input[type="checkbox"]');
+//   let textInputValue2 = document.getElementById('radioInput')?.value;
+
+//   checkboxes2.forEach(function (checkbox2) {
+//     if (checkbox2.checked) {
+//       checkedCheckboxes2.push(checkbox2.value);
+//       if (checkbox2.value === "Others") {
+//         checkedCheckboxes2.push(textInputValue2);
+//       }
+//     }
+//   });
+
+//   console.log(checkedCheckboxes2);
+// }
+
+function showError(message) {
+  vanillaToast
+      .error(message, { duration: 800, fadeDuration: 100, closeButton: false })
+}
+
+function validateInputAndSwitch2() {
+  var radioToBeInput = document.getElementById('radioToBeInput');
+  var radioInput = document.getElementById('radioInput');
+
+  var radioInputs = document.querySelectorAll('input[name="hear"]');
+  var isRadioSelected = Array.from(radioInputs).some(radio => radio.checked);
+
+  var isTextInputFilled = radioToBeInput.checked && radioInput.value.trim() !== '';
+
+  if (isRadioSelected || isTextInputFilled) {
+    switchToComponent(2);
+  } else {
+    showError("Please choose at least one option or fill in the 'Others' input.")
+  } 
+}
+
+function validateInputsAndSwitch3() {
+  var nameInput = document.getElementById('name');
+  var roleInput = document.getElementById('role');
+  var emailInput = document.getElementById('email');
+  var companyInput = document.getElementById('company');
+  var websiteInput = document.getElementById('website');
+  var termsCheckbox = document.getElementById('termsCheckbox');
+
+  // Regular expression for email validation
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Regular expression for website validation
+  var websiteRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-zA-Z0-9]+([.-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/;
+
+  var inputs = [
+    { element: nameInput, fieldName: 'Your Name' },
+    { element: roleInput, fieldName: 'Your Role' },
+    { element: emailInput, fieldName: 'Your Email', regex: emailRegex, errorMessage: 'Invalid email format' },
+    { element: companyInput, fieldName: 'Company Name' },
+    { element: websiteInput, fieldName: 'Company Website', regex: websiteRegex, errorMessage: 'Invalid website format' }
+  ];
+
+  var areAllInputsFilled = inputs.every(input => {
+    var value = input.element.value.trim();
+    if (value === '') {
+      showError(input.fieldName + ' is required');
+    }
+    return value !== '';
+  });
+
+  var areAllFormatsValid = inputs.every(input => {
+    if (input.regex && !input.regex.test(input.element.value.trim())) {
+      showError(input.errorMessage);
+      return false;
+    }
+    return true;
+  });
+
+  if (!termsCheckbox.checked) {
+    showError("Kindly check the terms and conditions");
+  } else if (areAllInputsFilled && areAllFormatsValid && termsCheckbox.checked) {
+    // Proceed to the next component (adjust the switchToComponent function according to your needs)
+    switchToComponent(3);
+  }
+}
+
+function validateCheckboxesAndSwitch4() {
+  var checkbox1 = document.getElementById('checkbox1');
+  var checkbox2 = document.getElementById('checkbox2');
+  var checkbox3 = document.getElementById('checkbox3');
+  var checkbox4 = document.getElementById('checkbox4');
+  var checkToBeInput = document.getElementById('checkToBeInput');
+  var checkInput = document.getElementById('checkInput');
+
+  var checkboxes = [
+    { element: checkbox1, label: 'Build Chatbot' },
+    { element: checkbox2, label: 'Integrate Chatgpt' },
+    { element: checkbox3, label: 'Develop Own AI' },
+    { element: checkbox4, label: 'AI with Web3' },
+  ];
+
+  var areAnyCheckboxesChecked = checkboxes.some(checkbox => checkbox.element.checked);
+
+  var isOtherCheckboxChecked = checkToBeInput.checked;
+  var isOtherCheckboxInputFilled = isOtherCheckboxChecked && checkInput.value.trim() !== '';
+
+  if (areAnyCheckboxesChecked || isOtherCheckboxInputFilled) {
+    // Proceed to the next component (adjust the switchToComponent function according to your needs)
+    switchToComponent(4);
+  } else {
+    showError('Please choose at least one option or fill in the "Others" input.');
+  }
+}
+
+
+function validateTechStackAndSubmit5() {
+  var checkbox11 = document.getElementById('checkbox11');
+  var checkbox22 = document.getElementById('checkbox22');
+  var checkbox33 = document.getElementById('checkbox33');
+  var checkbox44 = document.getElementById('checkbox44');
+  var checkToBeInputt = document.getElementById('checkToBeInputt');
+  var radioInputt = document.getElementById('radioInputt');
+
+  var checkboxes = [
+    { element: checkbox11, label: 'Nextjs + OpenaAi + Other Tech..' },
+    { element: checkbox22, label: 'Django + OpenaAi + Other Tech..' },
+    { element: checkbox33, label: 'React + Custom Model + Other Tech..' },
+    { element: checkbox44, label: 'Laama + Web3 + Other Tech..' },
+  ];
+
+  var areAnyCheckboxesChecked = checkboxes.some(checkbox => checkbox.element.checked);
+
+  var isOtherCheckboxChecked = checkToBeInputt.checked;
+  var isOtherCheckboxInputFilled = isOtherCheckboxChecked && radioInputt.value.trim() !== '';
+
+  if (areAnyCheckboxesChecked || isOtherCheckboxInputFilled) {
+    // Call a function to submit the user data or switch to the next component
+    submitUserData();
+  } else {
+    showError('Please choose at least one option or fill in the "Others" input.');
+  }
 }
