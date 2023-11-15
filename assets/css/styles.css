@@ -286,7 +286,7 @@ img {
   z-index: 99999;
 }
 
-.whatsapp-button, .messenger-button, .instagram-button, .twitter-button, .linkedin-button{
+.whatsapp-button{
   position: fixed;
   right: 20px;
   font-size: 24px;
