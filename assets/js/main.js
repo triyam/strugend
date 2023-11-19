@@ -882,3 +882,4 @@ function validateTechStackAndSubmit5() {
     showError('Please choose at least one option or fill in the "Others" input.');
   }
 }
+

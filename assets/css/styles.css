@@ -270,12 +270,21 @@ img {
   bottom: 1.5rem;
 }
 
+/*========== STRUGEND LOGO ==========*/
+.strugend__logo {
+  max-width: 85px;
+  height: auto;
+  margin-right: 10px; 
+}
+
+
 /*========== WHATSAPP BUTTON ==========*/
 .whatsapp-button {
   position: fixed;
   bottom: 80px;
   right: 1rem;
-  background-color: #25D366; /* WhatsApp green */
+  background-color: #25D366;
+  /* WhatsApp green */
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -286,7 +295,7 @@ img {
   z-index: 99999;
 }
 
-.whatsapp-button{
+.whatsapp-button {
   position: fixed;
   right: 20px;
   font-size: 24px;
@@ -297,59 +306,101 @@ img {
   padding: 10px 15px;
   color: #fff;
   border: none;
-  transition: background-color 0.3s ease; /* Add smooth transition effect */
+  transition: background-color 0.3s ease;
+  /* Add smooth transition effect */
   z-index: 99999;
 }
 
 .whatsapp-button {
-  background-color: #25d366; /* WhatsApp green color */
+  background-color: #25d366;
+  /* WhatsApp green color */
   bottom: 80px;
 }
 
 .messenger-button {
-  background-color: #1877f2; /* Facebook blue color */
+  background-color: #1877f2;
+  /* Facebook blue color */
   bottom: 140px;
 }
 
 .instagram-button {
-  background-color: #e4405f; /* Instagram pink color */
+  background-color: #e4405f;
+  /* Instagram pink color */
   bottom: 200px;
 }
 
 .twitter-button {
-  background-color: #1da1f2; /* Twitter blue color */
+  background-color: #1da1f2;
+  /* Twitter blue color */
   bottom: 260px;
 }
 
 .linkedin-button {
-  background-color: #0077b5; /* LinkedIn blue color */
+  background-color: #0077b5;
+  /* LinkedIn blue color */
   bottom: 320px;
-} */
+}
 
-
-.whatsapp-button:hover {
-  background-color: #128C7E; /* Darker shade of WhatsApp green */
+*/ .whatsapp-button:hover {
+  background-color: #128C7E;
+  /* Darker shade of WhatsApp green */
 }
 
 .messenger-button:hover {
-  background-color: #0d63a0; /* Darker shade of Facebook blue on hover */
+  background-color: #0d63a0;
+  /* Darker shade of Facebook blue on hover */
 }
 
 .instagram-button:hover {
-  background-color: #bc2a8d; /* Darker shade of Instagram pink on hover */
+  background-color: #bc2a8d;
+  /* Darker shade of Instagram pink on hover */
 }
 
 .twitter-button:hover {
-  background-color: #1778f2; /* Darker shade of Twitter blue on hover */
+  background-color: #1778f2;
+  /* Darker shade of Twitter blue on hover */
 }
 
 .linkedin-button:hover {
-  background-color: #005382; /* Darker shade of LinkedIn blue on hover */
+  background-color: #005382;
+  /* Darker shade of LinkedIn blue on hover */
 }
 
 /*========== OLD ==========*/
 .old__container {
   row-gap: .3rem;
+}
+
+/*========== TESTIMONIAL ==========*/
+.testimonial-container {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.testimonial-author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.testimonial-author div {
+  display: inline-block;
+}
+
+.testimonial-author p {
+  margin: 0;
+  font-size: var(--small-font-size);
 }
 
 /*========== OTHERS ==========*/
@@ -370,11 +421,11 @@ img {
   padding: 20px;
 }
 
-.others header h1{
+.others header h1 {
   color: #fff;
 }
 
-.others header p{
+.others header p {
   color: #fff;
 }
 
@@ -394,12 +445,12 @@ img {
   color: var(--text-color)
 }
 
-.others p span{
+.others p span {
   font-weight: bold;
   color: var(--first-color-alt)
 }
 
-.others p em{
+.others p em {
   margin-top: 1rem;
 }
 
@@ -617,6 +668,8 @@ img {
   border-radius: .5rem;
   font-weight: var(--font-semi-bold);
   transition: .3s;
+  cursor: pointer;
+  border: solid 1px transparent;
 }
 
 .button:hover {
@@ -1002,4 +1055,3 @@ img {
   width: 100%;
   height: 100vh;
 }
-

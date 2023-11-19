@@ -12,8 +12,10 @@
 
   <!-- Open Graph Protocol for social media -->
   <meta property="og:title" content="Home | Strugend" />
-  <meta property="og:description" content="Empowering businesses with cutting-edge AI solutions. Our AI consulting agency specializes in providing innovative artificial intelligence services, from machine learning and data analytics to custom AI development. Partner with us to transform your business through intelligent automation and data-driven insights." />
-  <meta property="og:image" content="https://strugend.com/assets/img/metaImage.png" /> <!-- Replace with the URL of your image -->
+  <meta property="og:description"
+    content="Empowering businesses with cutting-edge AI solutions. Our AI consulting agency specializes in providing innovative artificial intelligence services, from machine learning and data analytics to custom AI development. Partner with us to transform your business through intelligent automation and data-driven insights." />
+  <meta property="og:image" content="https://strugend.com/assets/img/metaImage.png" />
+  <!-- Replace with the URL of your image -->
   <meta property="og:url" content="https://Strugend.com" />
 
   <!--========== FAVICON ==========-->
@@ -34,7 +36,8 @@
 
 <body>
   <!--========== WHATSAPP BuTTON ==========-->
-  <a href="https://wa.me/917328834913?text=I%20want%20to%20know,%20how%20you%20can%20add%20value%20to%20us?" target="_blank" class="whatsapp-button">
+  <a href="https://wa.me/917328834913?text=I%20want%20to%20know,%20how%20you%20can%20add%20value%20to%20us?"
+    target="_blank" class="whatsapp-button">
     <i class='bx bxl-whatsapp'></i>
   </a>
 
@@ -62,7 +65,7 @@
   <!--========== HEADER ==========-->
   <header class="l-header" id="header">
     <nav class="nav bd-container">
-      <a href="#" class="nav__logo">Strugend</a>
+      <a href="./index.html" class="strugend__logo"><img src="./assets/img/logo/strugend.png" alt="Strugend"></a>
 
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
@@ -72,6 +75,7 @@
           <li class="nav__item"><a href="#accessory" class="nav__link">Team</a></li>
 
           <li><i class='bx bx-toggle-left change-theme' id="theme-button"></i></li>
+          <li class="nav__item"><a class="button" style="padding: 0.8rem 1.6rem; border-radius: 50px;" href="./onboarding.html">Book a call</a></li>
         </ul>
       </div>
 
@@ -101,7 +105,8 @@
 
         <div class="home__data">
           <h1 class="home__title">Send an AI Gift To Users</h1>
-          <p class="home__description">In these end of the year holidays send an AI tech as a gift to your loved users
+          <p class="home__description">In these end of the year holidays send an AI - GPT4, LLMs & NLP tech as a gift to
+            your loved users
             and share the happiness at Christmas.</p>
           <a href="./onboarding.html" class="button">Get Started</a>
         </div>
@@ -113,8 +118,10 @@
       <div class="share__container bd-grid">
         <div class="share__data">
           <h2 class="section-title-center">Sharing Is The Best Gift <br> You Can Give</h2>
-          <p class="share__description">"Sharing holiday joy is the ultimate upgrade. Gift a present, spread love with
-            your top connections, and celebrate with maximum tech-enhanced happiness."</p>
+          <p class="share__description">Sharing holiday joy is the ultimate upgrade. Gift a present, spread love with
+            your top connections, and celebrate with maximum tech-enhanced happiness. Our end-to-end solution covers
+            everything from ideation, development to integration in 6-10 weeks. Value-based billing. 10x ROI Guarantee
+          </p>
           <a href="#send-section" class="button">Send a Gift</a>
         </div>
 
@@ -144,6 +151,46 @@
           <img src="assets/img/decoration3.png" alt="" class="decoration__img">
           <h3 class="decoration__title">Integration Trees</h3>
           <a href="./onboarding.html" class="button button-link">Go Shopping</a>
+        </div>
+      </div>
+    </section>
+
+    <!--========== Testimonials ==========-->
+    <section class="decoration section bd-container" id="decoration">
+      <h2 class="section-title">How Much We Have<br> Shared Happiness</h2>
+      <div class="decoration__container bd-grid">
+        <div class="testimonial-container" style="background-color: var(--container-color);">
+          <p>"With the support of STRUGEND, we are here having one of the best centralized crypto exchange platforms in
+            the world. I really think STRUGEND makes the impossible sounds like the comedy"</p>
+          <div class="testimonial-author">
+            <img src="./old/assets/images/testimonials/author-01.png" alt="Rani Singh">
+            <div>
+              <p><strong>Rani Singh</strong></p>
+              <p>Director @ Bitzee Pvt. Ltd.</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-container" style="background-color: var(--container-color);">
+          <p>"The patient bills and prescription management system on the blockchain developed by STRUGEND is wonderful,
+            I am personally grateful as without their support our features will be incomplete"</p>
+          <div class="testimonial-author">
+            <img src="./old/assets/images/testimonials/author-02.png" alt="NM Baibhab">
+            <div>
+              <p><strong>NM Baibhab</strong></p>
+              <p>Co - founder @ Soulbliz</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-container" style="background-color: var(--container-color);">
+          <p>"The crypto mutual platform developed by STRUGEND is way cool and working great. Thank you STRUGEND. Keep
+            it up and go ahead in life"</p>
+          <div class="testimonial-author">
+            <img src="./old/assets/images/testimonials/author-03.png" alt="Krishal Mehta">
+            <div>
+              <p><strong>Krishal Mehta</strong></p>
+              <p>CEO @ Waveprotocol</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -261,6 +308,41 @@
 
     <p class="footer__copy">&#169; 2022-2024 Strugend. All right reserved</p>
   </footer>
+
+
+  <!--========== SELF ROTATING CAROUSAL ==========-->
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.getElementById("logo-carousel");
+    let currentIndex = 0;
+
+    function rotateCarousel() {
+        currentIndex = (currentIndex + 1) % carousel.children.length;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        const translateValue = -currentIndex * 100 + "%";
+        carousel.style.transition = "transform 1s ease-in-out";
+        carousel.style.transform = "translateX(" + translateValue + ")";
+    }
+
+    // Detect when the transition ends, then rotate again
+    carousel.addEventListener("transitionend", function () {
+        // Reset transition to prevent continuous transitions during rotation
+        carousel.style.transition = "none";
+
+        // Wait for a brief moment (adjust as needed) before rotating again
+        setTimeout(function () {
+            rotateCarousel();
+            carousel.style.transition = "transform 1s ease-in-out"; // Restore transition
+        }, 500);
+    });
+
+    // Start the rotation
+    rotateCarousel();
+});
+  </script> -->
 
   <!--========== SCROLL REVEAL ==========-->
   <script src="https://unpkg.com/scrollreveal"></script>
