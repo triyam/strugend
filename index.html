@@ -41,6 +41,8 @@
     <i class='bx bxl-whatsapp'></i>
   </a>
 
+  <div id="magicform-root" style="z-index: 9999;position: relative;"></div>
+
   <!-- <a href="https://www.messenger.com/t/100012349514043?text=I%20want%20to%20know,%20how%20you%20can%20add%20value%20to%20us?" target="_blank" class="messenger-button">
     <i class='bx bxl-messenger'></i>
   </a>
@@ -75,7 +77,8 @@
           <li class="nav__item"><a href="#accessory" class="nav__link">Team</a></li>
 
           <li><i class='bx bx-toggle-left change-theme' id="theme-button"></i></li>
-          <li class="nav__item"><a class="button" style="padding: 0.8rem 1.6rem; border-radius: 50px;" href="./onboarding.html">Book a call</a></li>
+          <li class="nav__item"><a class="button" style="padding: 0.8rem 1.6rem; border-radius: 50px;"
+              href="./onboarding.html">Book a call</a></li>
         </ul>
       </div>
 
@@ -210,12 +213,12 @@
         </div>
 
         <div class="accessory__content">
-                        <img src="assets/img/accessory2.png" alt="" class="accessory__img">
-                        <h3 class="accessory__title">CEO</h3>
-                        <span class="accessory__category">Triyambaka Mishra</span>
-                        <span class="accessory__preci">$2.52</span>
-                        <a href="https://www.linkedin.com/in/triyam/" class="button accessory__button"><i class='bx bx-heart'></i></a>
-                    </div>
+          <img src="assets/img/accessory2.png" alt="" class="accessory__img">
+          <h3 class="accessory__title">CEO</h3>
+          <span class="accessory__category">Triyambaka Mishra</span>
+          <span class="accessory__preci">$2.52</span>
+          <a href="https://www.linkedin.com/in/triyam/" class="button accessory__button"><i class='bx bx-heart'></i></a>
+        </div>
 
         <div class="accessory__content">
           <img src="assets/img/accessory3.png" alt="" class="accessory__img">
@@ -268,7 +271,7 @@
         </h3>
         <p class="footer__description">I sent an AI gift and it gives <br> happiness</p>
       </div>
-      
+
 
       <div class="footer__content">
         <h3 class="footer__title">Our Services</h3>
@@ -306,6 +309,18 @@
 
   <!--========== MAIN JS ==========-->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    (function (w, d, s, o, f, js, fjs) {
+      w["Simple-Widget"] = o; w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+      js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+      js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, "script", "w1", 'https://magicform-widget-assets.s3.us-west-2.amazonaws.com/widget.js'));
+    w1("init",
+      { "popUpTimer": 3000, "imageUrl": null, "chatHeight": "max(631px,50vh)", "chatWidth": "371px", "placeholder": "Type a message...", "title": "Live Chat Professional", "subtitle": "Typically Responds in 5 Seconds", "widgetType": "bubble", "targetElementId": "magicform-root", "stackId": "stack_373d2fad-5160-4e40-8f79-12135218d4b6", "userId": "eacd17d1-0863-494f-aa05-31d682e679c0", "colors": { "main": "#000000", "userMessageBubble": "#000000" } }
+    );
+  </script>
+
 
 </body>
 
